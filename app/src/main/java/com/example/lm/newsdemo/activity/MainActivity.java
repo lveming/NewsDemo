@@ -1,10 +1,11 @@
 package com.example.lm.newsdemo.activity;
 
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
+
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -21,6 +22,7 @@ import com.example.lm.newsdemo.frament.FuwuFragment;
 import com.example.lm.newsdemo.frament.NewsFragment;
 import com.example.lm.newsdemo.frament.ShezhiFragment;
 import com.example.lm.newsdemo.frament.ShouyeFragment;
+import com.example.lm.newsdemo.global.AppConstants;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, BottomNavigationBar.OnTabSelectedListener {
 
@@ -46,9 +48,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void setDefaultFragment() {
-        FragmentManager fm=getFragmentManager();
+        FragmentManager fm=getSupportFragmentManager();
         FragmentTransaction ft=fm.beginTransaction();
-        mShouyeFragment =ShouyeFragment.newInstance("首页");
+        mShouyeFragment =ShouyeFragment.newInstance(AppConstants.SHOW_YE);
         ft.add(R.id.id_main_FrameLayout,mShouyeFragment);
         ft.commit();
     }
@@ -81,10 +83,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         mBottomNavigationBar= (BottomNavigationBar) findViewById(R.id.id_BottomNavigationBar);
         mBottomNavigationBar
-                .addItem(new BottomNavigationItem(R.mipmap.shouye, "首页").setActiveColor(R.color.green))
-                .addItem(new BottomNavigationItem(R.mipmap.news, "新闻").setActiveColor(R.color.colorAccent))
-                .addItem(new BottomNavigationItem(R.mipmap.fuwu, "服务").setActiveColor(R.color.blue))
-                .addItem(new BottomNavigationItem(R.mipmap.shezhi, "设置").setActiveColor(R.color.yellow))
+                .addItem(new BottomNavigationItem(R.mipmap.shouye, AppConstants.SHOW_YE).setActiveColor(R.color.green))
+                .addItem(new BottomNavigationItem(R.mipmap.news, AppConstants.XIN_WEN).setActiveColor(R.color.colorAccent))
+                .addItem(new BottomNavigationItem(R.mipmap.fuwu, AppConstants.FU_WU).setActiveColor(R.color.blue))
+                .addItem(new BottomNavigationItem(R.mipmap.shezhi, AppConstants.SHE_ZHI).setActiveColor(R.color.yellow))
                 .setFirstSelectedPosition(0)
                 .initialise();
 
@@ -103,31 +105,31 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public void onTabSelected(int position) {//未选择 --> 选择
         Log.d(TAG, "onTabSelected() called with: " + "position = [" + position + "]");
-        FragmentManager fragmentManager=getFragmentManager();
+        FragmentManager fragmentManager=getSupportFragmentManager();
         FragmentTransaction transaction=fragmentManager.beginTransaction();
 
         switch (position){
             case 0:
                 if (mShouyeFragment==null){
-                    mShouyeFragment=ShouyeFragment.newInstance("首页");
+                    mShouyeFragment=ShouyeFragment.newInstance(AppConstants.SHOW_YE);
                 }
                 transaction.replace(R.id.id_main_FrameLayout,mShouyeFragment);
                 break;
             case 1:
                 if (mNewsFragment==null){
-                    mNewsFragment=NewsFragment.newInstance("新闻");
+                    mNewsFragment=NewsFragment.newInstance(AppConstants.XIN_WEN);
                 }
                 transaction.replace(R.id.id_main_FrameLayout,mNewsFragment);
                 break;
             case 2:
                 if (mFuwuFragment==null){
-                    mFuwuFragment=FuwuFragment.newInstance("服务");
+                    mFuwuFragment=FuwuFragment.newInstance(AppConstants.FU_WU);
                 }
                 transaction.replace(R.id.id_main_FrameLayout,mFuwuFragment);
                 break;
             case 3:
                 if (mShezhiFragment==null){
-                    mShezhiFragment=ShezhiFragment.newInstance("设置");
+                    mShezhiFragment=ShezhiFragment.newInstance(AppConstants.SHE_ZHI);
                 }
                 transaction.replace(R.id.id_main_FrameLayout,mShezhiFragment);
                 break;

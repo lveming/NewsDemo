@@ -10,37 +10,40 @@ import android.widget.TextView;
 
 import com.example.lm.newsdemo.R;
 
-public class ShouyeFragment extends Fragment {
+public class NewsChildFragment extends Fragment {
 
- 
-  public static ShouyeFragment newInstance(String param1) {
-    ShouyeFragment fragment = new ShouyeFragment();
+
+
+  public static NewsChildFragment newInstance(String param1) {
+    NewsChildFragment fragment = new NewsChildFragment();
     Bundle args = new Bundle();
     args.putString("agrs1", param1);
     fragment.setArguments(args);
     return fragment;
   }
- 
-  public ShouyeFragment() {
+
+  public NewsChildFragment() {
  
   }
  
   @Override
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
+
   }
- 
+
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
                            Bundle savedInstanceState) {
-    View view = inflater.inflate(R.layout.fragment_shouye, container, false);
+    View view = inflater.inflate(R.layout.fragment_news_child, container, false);
     Bundle bundle = getArguments();
     String agrs1 = bundle.getString("agrs1");
-    TextView tv = (TextView)view.findViewById(R.id.id_fragment_shouye_textView);
+    TextView tv = (TextView)view.findViewById(R.id.id_fragment_news_Child_textView);
     tv.setText(agrs1);
+
     return view;
   }
  
- 
+
  
 }
