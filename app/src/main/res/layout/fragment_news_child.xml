@@ -20,4 +20,12 @@
         android:layout_height="200dp"
         app:indicator_height="10dp"
         app:indicator_width="10dp" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/id_fragment_news_Child_RecycleView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+    </android.support.v7.widget.RecyclerView>
 </LinearLayout>

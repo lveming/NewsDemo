@@ -7,4 +7,7 @@
     <color name="yellow">#e9da10</color>
     <color name="blue">#076de9</color>
     <color name="reb">#d2040e</color>
+    <color name="cardView_bg">#f3d7d7d7</color>
+    <color name="timeColor">#616161</color>
+    <color name="textColor">#1e1e1e</color>
 </resources>
